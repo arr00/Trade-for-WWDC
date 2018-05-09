@@ -1,22 +1,38 @@
 PODS:
   - Bolts/Tasks (1.9.0)
+  - MessageKit (1.0.0-beta.1)
   - Parse (1.17.1):
     - Parse/Core (= 1.17.1)
   - Parse/Core (1.17.1):
     - Bolts/Tasks (~> 1.9)
+  - SendBirdSDK (3.0.96)
 
 DEPENDENCIES:
+  - MessageKit (from `https://github.com/MessageKit/MessageKit.git`)
   - Parse
+  - SendBirdSDK
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Bolts
     - Parse
+    - SendBirdSDK
+
+EXTERNAL SOURCES:
+  MessageKit:
+    :git: https://github.com/MessageKit/MessageKit.git
+
+CHECKOUT OPTIONS:
+  MessageKit:
+    :commit: 45c0b78ac1ced3e19c837572f994a0d2eaf2b00b
+    :git: https://github.com/MessageKit/MessageKit.git
 
 SPEC CHECKSUMS:
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
+  MessageKit: 6f1313d60e480e4b09641582c65f3e36825a5bf4
   Parse: d3edaf8c7c722cb33cb83ba7821d015ae32d362d
+  SendBirdSDK: e1247b1284a48ffa6f34f554b6d645ec34d4ff74
 
-PODFILE CHECKSUM: 5dec38c33726a8ea5dfa30442d9be021b252e256
+PODFILE CHECKSUM: e32271e2b5a7921ce4dcb8700d3bb5bb57a65900
 
 COCOAPODS: 1.5.0

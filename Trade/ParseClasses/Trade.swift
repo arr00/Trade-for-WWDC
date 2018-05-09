@@ -15,21 +15,26 @@ public class Trade:PFObject, PFSubclassing {
     }
     
     @NSManaged var requester:PFUser
-    @NSManaged var giveItems:[Item]
-    @NSManaged var getItems:[Item]
-    @NSManaged var giveItemsNotes:[String]
-    @NSManaged var getItemsNotes:[String]
+    @NSManaged var giveItem:Item?
+    @NSManaged var getItem:Item?
+    @NSManaged var giveItemNotes:String
+    @NSManaged var getItemNotes:String
     @NSManaged var match:PFUser
     
     //contains creation date, creator, give items (pointer), give item details (array of strings), get items (pointers), get items details (array of strings), and acceptor
     
-    public convenience init(giveItems:[Item], getItems:[Item], giveItemsNotes:[String], getItemsNotes:[String]) {
+    public override init() {
+        super.init()
+        
+        
+    }
+    public convenience init(giveItem:Item, getItem:Item, giveItemNotes:String, getItemNotes:String) {
         self.init()
         
-        self.giveItems = giveItems
-        self.getItems = getItems
-        self.giveItemsNotes = giveItemsNotes
-        self.getItemsNotes = getItemsNotes
+        self.giveItem = giveItem
+        self.getItem = getItem
+        self.giveItemNotes = giveItemNotes
+        self.getItemNotes = getItemNotes
         if let user = PFUser.current() {
             self.requester = user
         }

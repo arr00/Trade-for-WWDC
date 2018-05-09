@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Parse
+import SendBirdSDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,10 +18,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
+        SBDMain.initWithApplicationId("5D96AA5B-A934-44C6-8B88-B7F715FA0509")
         //Register parse subclasses
         Trade.registerSubclass()
         Item.registerSubclass()
+        
+        let parseSetup = ParseClientConfiguration { (server) in
+            server.applicationId = "APPLICATION_ID"
+            server.server = "http://192.168.1.169:1337/parse"
+        }
+        Parse.initialize(with: parseSetup)
+        if PFUser.current() == nil {
+            PFAnonymousUtils.logInInBackground()
+            PFAnonymousUtils.logIn { (user, error) in
+                if error == nil {
+                    SBDMain.connect(withUserId: user!.objectId!, completionHandler: { (user, error) in
+                        print("Connected to sendbird")
+                    })
+                }
+               
+            }
+        }
         
         
         

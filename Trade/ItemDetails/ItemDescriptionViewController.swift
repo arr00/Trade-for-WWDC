@@ -12,11 +12,23 @@ class ItemDescriptionViewController: UIViewController, UITableViewDelegate, UITa
 
     var item:Item?
     var editable:Bool?
+    var type:Type?
+    var trade:Trade?
+    var getOrGive:Bool?
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var imageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        switch type ?? Type.ExistingTrade {
+        case .NewTrade:
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(ItemDescriptionViewController.save))
+        case .ExistingTrade:
+            //self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Close", style: .done, target: self, action: #selector(ItemDescriptionViewController.dismissMe))
+            break
+        }
+        
+        
         tableView.dataSource = self
         tableView.delegate = self
         // Do any additional setup after loading the view.
@@ -30,6 +42,23 @@ class ItemDescriptionViewController: UIViewController, UITableViewDelegate, UITa
                 }
             }
         }
+    }
+    
+    @objc func save() {
+        if getOrGive ?? false {
+            trade?.getItem = item!
+        }
+        else {
+            trade?.giveItem = item!
+        }
+        print("saving")
+        
+        print("Saving trade")
+        print(trade)
+        self.dismiss(animated: true, completion: nil)
+    }
+    @objc func dismissMe() {
+        self.dismiss(animated: true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {

@@ -13,14 +13,18 @@ class AddItemVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
     var availibleItems:[Item]!
     var currentIndex = -1
+    var trade:Trade?
+    var getOrGive:Bool?
     override func viewDidLoad() {
         super.viewDidLoad()
         
         availibleItems = [Item]()
-        
+        updateItems()
 
         tableView.delegate = self
         tableView.dataSource = self
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .done, target: self, action: #selector(AddItemVC.cancel))
         
         // Do any additional setup after loading the view.
     }
@@ -32,8 +36,16 @@ class AddItemVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 for object in objects! {
                     self.availibleItems.append(object as! Item)
                 }
+                let item = Item()
+                item.title = "Money"
+                self.availibleItems.append(item)
+                self.tableView.reloadData()
             }
         }
+    }
+    
+    @objc func cancel() {
+        self.dismiss(animated: true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,19 +63,31 @@ class AddItemVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell") as! GenericItemTableViewCell
         let item = availibleItems[indexPath.row]
         cell.titleLabel.text = item.title
-        item.image.getDataInBackground { (data, error) in
-            if error == nil && data != nil {
-                if let image = UIImage(data: data!) {
-                    cell.myImageView.image = image
-                }
-            }
-        }
+        print("fetching image")
+        cell.file = item.image
+        
         
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        currentIndex = indexPath.row
-        self.performSegue(withIdentifier: "showItemDetails", sender: self)
+        if indexPath.row == availibleItems.count - 1 {
+            let alert = UIAlertController(title: "Value in USD", message: "", preferredStyle: .alert)
+            alert.addTextField { (field) in
+                print("hello")
+            }
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (alert) in
+                print("Added money with value of ")
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
+        else {
+            currentIndex = indexPath.row
+            self.performSegue(withIdentifier: "showItemDetails", sender: self)
+        }
+        
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
     }
     
 
@@ -76,6 +100,9 @@ class AddItemVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             if let dest = segue.destination as? ItemDescriptionViewController {
                 dest.item = availibleItems[currentIndex]
                 dest.editable = true
+                dest.type = Type.NewTrade
+                dest.trade = trade
+                dest.getOrGive = getOrGive
             }
         }
     }
