@@ -10,7 +10,6 @@
 		3035EB1620A0A83300363044 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3035EB1520A0A83300363044 /* AppDelegate.swift */; };
 		3035EB1820A0A83300363044 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3035EB1720A0A83300363044 /* ViewController.swift */; };
 		3035EB1B20A0A83300363044 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3035EB1920A0A83300363044 /* Main.storyboard */; };
-		3035EB1D20A0A83500363044 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3035EB1C20A0A83500363044 /* Assets.xcassets */; };
 		3035EB2020A0A83500363044 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3035EB1E20A0A83500363044 /* LaunchScreen.storyboard */; };
 		3035EB2920A0A95900363044 /* TradeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3035EB2720A0A95900363044 /* TradeTableViewCell.swift */; };
 		3035EB2A20A0A95900363044 /* TradeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3035EB2820A0A95900363044 /* TradeTableViewCell.xib */; };
@@ -25,15 +24,16 @@
 		307EDBD820A0E08F001E06B8 /* TradeDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307EDBD720A0E08F001E06B8 /* TradeDetailsViewController.swift */; };
 		30A329BF20A12E27007095FB /* TradesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A329BE20A12E27007095FB /* TradesViewController.swift */; };
 		30C8174620A2707500DA0C4C /* ActualMessagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C8174520A2707500DA0C4C /* ActualMessagingViewController.swift */; };
+		30E3952120A27FFD0034F74F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30E3952020A27FFD0034F74F /* Assets.xcassets */; };
 		45048D6C7E90CC7239E5A1DD /* Pods_Trade.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55BE4A048091E487BF3F80D9 /* Pods_Trade.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		300D7EC720A3A24100C5C2D2 /* Trade.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Trade.entitlements; sourceTree = "<group>"; };
 		3035EB1220A0A83300363044 /* Trade.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trade.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3035EB1520A0A83300363044 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3035EB1720A0A83300363044 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3035EB1A20A0A83300363044 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		3035EB1C20A0A83500363044 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3035EB1F20A0A83500363044 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3035EB2120A0A83500363044 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3035EB2720A0A95900363044 /* TradeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeTableViewCell.swift; sourceTree = "<group>"; };
@@ -49,6 +49,7 @@
 		307EDBD720A0E08F001E06B8 /* TradeDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeDetailsViewController.swift; sourceTree = "<group>"; };
 		30A329BE20A12E27007095FB /* TradesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradesViewController.swift; sourceTree = "<group>"; };
 		30C8174520A2707500DA0C4C /* ActualMessagingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActualMessagingViewController.swift; sourceTree = "<group>"; };
+		30E3952020A27FFD0034F74F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../Downloads/Assets.xcassets; sourceTree = "<group>"; };
 		55BE4A048091E487BF3F80D9 /* Pods_Trade.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Trade.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C845E2A5638512DFBC9D6122 /* Pods-Trade.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trade.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Trade/Pods-Trade.debug.xcconfig"; sourceTree = "<group>"; };
 		D0E3C56110E81E23A2FCEB10 /* Pods-Trade.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trade.release.xcconfig"; path = "Pods/Target Support Files/Pods-Trade/Pods-Trade.release.xcconfig"; sourceTree = "<group>"; };
@@ -87,13 +88,14 @@
 		3035EB1420A0A83300363044 /* Trade */ = {
 			isa = PBXGroup;
 			children = (
+				300D7EC720A3A24100C5C2D2 /* Trade.entitlements */,
 				307EDBD220A0C909001E06B8 /* ParseClasses */,
 				307EDBD120A0C8F4001E06B8 /* ItemDetails */,
 				307EDBD020A0C8DF001E06B8 /* AddItem */,
 				3035EB1520A0A83300363044 /* AppDelegate.swift */,
 				3035EB1720A0A83300363044 /* ViewController.swift */,
 				3035EB1920A0A83300363044 /* Main.storyboard */,
-				3035EB1C20A0A83500363044 /* Assets.xcassets */,
+				30E3952020A27FFD0034F74F /* Assets.xcassets */,
 				3035EB1E20A0A83500363044 /* LaunchScreen.storyboard */,
 				3035EB2120A0A83500363044 /* Info.plist */,
 				3035EB2720A0A95900363044 /* TradeTableViewCell.swift */,
@@ -185,6 +187,14 @@
 				TargetAttributes = {
 					3035EB1120A0A83300363044 = {
 						CreatedOnToolsVersion = 9.3;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -212,9 +222,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3035EB2020A0A83500363044 /* LaunchScreen.storyboard in Resources */,
-				3035EB1D20A0A83500363044 /* Assets.xcassets in Resources */,
 				3035EB2A20A0A95900363044 /* TradeTableViewCell.xib in Resources */,
 				3035EB1B20A0A83300363044 /* Main.storyboard in Resources */,
+				30E3952120A27FFD0034F74F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,6 +440,7 @@
 			baseConfigurationReference = C845E2A5638512DFBC9D6122 /* Pods-Trade.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Trade/Trade.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7U2DH9VLGW;
 				INFOPLIST_FILE = Trade/Info.plist;
@@ -449,6 +460,7 @@
 			baseConfigurationReference = D0E3C56110E81E23A2FCEB10 /* Pods-Trade.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Trade/Trade.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7U2DH9VLGW;
 				INFOPLIST_FILE = Trade/Info.plist;

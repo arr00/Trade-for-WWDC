@@ -25,25 +25,49 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let parseSetup = ParseClientConfiguration { (server) in
             server.applicationId = "APPLICATION_ID"
-            server.server = "http://192.168.1.169:1337/parse"
+            server.server = "http://129.98.193.215:1337/parse"
         }
         Parse.initialize(with: parseSetup)
-        if PFUser.current() == nil {
-            PFAnonymousUtils.logInInBackground()
-            PFAnonymousUtils.logIn { (user, error) in
-                if error == nil {
-                    SBDMain.connect(withUserId: user!.objectId!, completionHandler: { (user, error) in
-                        print("Connected to sendbird")
-                    })
-                }
-               
-            }
-        }
+        
         
         
         
         return true
     }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        SBDMain.registerDevicePushToken(deviceToken, unique: true) { (status, error) in
+            if error == nil {
+                if status == SBDPushTokenRegistrationStatus.pending {
+                    // Registration is pending.
+                    // If you get this status, invoke `+ registerDevicePushToken:unique:completionHandler:` with `[SBDMain getPendingPushToken]` after connection.
+                }
+                else {
+                    // Registration succeeded.
+                }
+            }
+            else {
+                // Registration failed.
+            }
+        }
+        let installation = PFInstallation.current()
+        installation?.setDeviceTokenFrom(deviceToken)
+        installation?.saveInBackground()
+        
+        if PFUser.current() != nil {
+            PFUser.current()!["installationId"] = installation?.objectId
+            PFUser.current()?.saveInBackground()
+        }
+    }
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("Failed to register!")
+        print("with error \(error.localizedDescription)")
+    }
+
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        PFPush.handle(userInfo)
+    }
+ 
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

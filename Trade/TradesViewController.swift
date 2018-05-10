@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import SendBirdSDK
 
 class TradesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -21,6 +22,21 @@ class TradesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let nib = UINib(nibName: "TradeTableViewCell", bundle: Bundle.main)
         tableView.register(nib, forCellReuseIdentifier: "tradeCell")
         trades = [Trade]()
+        if PFUser.current() == nil {
+            
+            PFAnonymousUtils.logIn { (user, error) in
+                if error == nil {
+                    SBDMain.connect(withUserId: user!.objectId!, completionHandler: { (user, error) in
+                        print("Connected to sendbird")
+                    })
+                    if PFInstallation.current() != nil {
+                        user!["installationId"] = PFInstallation.current()!.objectId
+                    }
+                    
+                }
+                
+            }
+        }
         
         
         tableView.delegate = self
@@ -39,6 +55,9 @@ class TradesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        let notificationSettings = UIUserNotificationSettings(types: [UIUserNotificationType.alert, UIUserNotificationType.sound], categories: nil)
+        UIApplication.shared.registerUserNotificationSettings(notificationSettings)
+        UIApplication.shared.registerForRemoteNotifications()
         updateTrades()
     }
     func updateTrades() {

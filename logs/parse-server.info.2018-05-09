@@ -1,0 +1,1 @@
+{"functionName":"acceptTrade","params":{"tradeId":"4SCkxnuotw"},"user":"ALv7mJ2F1R","level":"info","message":"Ran cloud function acceptTrade for user ALv7mJ2F1R with:\n  Input: {\"tradeId\":\"4SCkxnuotw\"}\n  Result: true","timestamp":"2018-05-09T21:50:06.638Z"}

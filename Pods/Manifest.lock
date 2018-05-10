@@ -5,11 +5,14 @@ PODS:
     - Parse/Core (= 1.17.1)
   - Parse/Core (1.17.1):
     - Bolts/Tasks (~> 1.9)
+  - Parse/UI (1.17.1):
+    - Parse/Core
   - SendBirdSDK (3.0.96)
 
 DEPENDENCIES:
   - MessageKit (from `https://github.com/MessageKit/MessageKit.git`)
-  - Parse
+  - Parse (~> 1.17.0-alpha.6)
+  - Parse/UI
   - SendBirdSDK
 
 SPEC REPOS:
@@ -33,6 +36,6 @@ SPEC CHECKSUMS:
   Parse: d3edaf8c7c722cb33cb83ba7821d015ae32d362d
   SendBirdSDK: e1247b1284a48ffa6f34f554b6d645ec34d4ff74
 
-PODFILE CHECKSUM: e32271e2b5a7921ce4dcb8700d3bb5bb57a65900
+PODFILE CHECKSUM: f9ac8658a534cf073088276c89573aa695892645
 
 COCOAPODS: 1.5.0

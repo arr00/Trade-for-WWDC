@@ -54,6 +54,7 @@ class MessagesVC:UIViewController, UITableViewDelegate, UITableViewDataSource {
         let match = PFQuery(className: "Trade")
         let requester = PFQuery(className: "Trade")
         requester.whereKey("requester", equalTo: PFUser.current())
+        requester.whereKeyExists("match")
         match.whereKey("match", equalTo: PFUser.current())
         let jointQuery = PFQuery.orQuery(withSubqueries: [requester,match])
         jointQuery.findObjectsInBackground { (objects, error) in

@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import SendBirdSDK
 
 class TradeDetailsViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
 
@@ -18,7 +19,7 @@ class TradeDetailsViewController: UIViewController, UITableViewDelegate,UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       
         if trade == nil {
             trade = Trade()
             if let user = PFUser.current() {
@@ -49,32 +50,38 @@ class TradeDetailsViewController: UIViewController, UITableViewDelegate,UITableV
     
     @objc func acceptTrade() {
         //TODO: Make trades immutable
-        trade.match = PFUser.current()!
-        let acl = PFACL()
-        acl.hasPublicWriteAccess = false
-        acl.hasPublicReadAccess = true
-        trade.acl = acl
+        //trade.match = PFUser.current()!
+
         //loading
-        trade.saveInBackground { (success, error) in
-            if success {
-                
-                let alert = UIAlertController(title: "Trade accepted!", message: "Go to messages to chat with your trade mate!", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { (alert) in
-                    //action
-                }))
-                self.navigationController?.popToRootViewController(animated: true)
-                self.navigationController!.present(alert, animated: true, completion: nil)
-                
-            }
-            
+        PFCloud.callFunction(inBackground: "acceptTrade", withParameters: ["tradeId":trade.objectId!]) { (result, error) in
+            print("Finished cloud call with result \(result)")
+            let alert = UIAlertController(title: "Trade accepted!", message: "Go to messages to chat with your trade mate!", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { (alert) in
+                //action
+            }))
+            self.navigationController?.popToRootViewController(animated: true)
+            self.navigationController!.present(alert, animated: true, completion: nil)
         }
+      
     }
     
     @objc func submitTrade() {
+        let acl = PFACL()
+        acl.hasPublicReadAccess = true
+        acl.hasPublicWriteAccess = false
+        trade.acl = acl
         trade.saveInBackground { (success, error) in
             print("Trade posted with success of \(success)")
+            if success {
+                let alert = UIAlertController(title: "Trade posted successfully", message: "Your trade is on our servers! Hold tight and we'll let you know when it's accepted.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Cool", style: .default, handler: { (action) in
+                    self.myDismiss()
+                }))
+                self.present(alert, animated: true, completion:nil)
+            }
+           
         }
-        myDismiss()
+        
     }
     
     @objc func myDismiss() {
