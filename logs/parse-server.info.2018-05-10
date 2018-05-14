@@ -1,0 +1,2 @@
+{"functionName":"acceptTrade","params":{"tradeId":"Obii7rbT6U"},"user":"ALv7mJ2F1R","level":"info","message":"Ran cloud function acceptTrade for user ALv7mJ2F1R with:\n  Input: {\"tradeId\":\"Obii7rbT6U\"}\n  Result: true","timestamp":"2018-05-10T01:08:09.230Z"}
+{"functionName":"acceptTrade","params":{"tradeId":"Obii7rbT6U"},"user":"ALv7mJ2F1R","level":"info","message":"Ran cloud function acceptTrade for user ALv7mJ2F1R with:\n  Input: {\"tradeId\":\"Obii7rbT6U\"}\n  Result: true","timestamp":"2018-05-10T01:45:25.362Z"}

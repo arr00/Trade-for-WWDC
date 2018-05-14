@@ -7,15 +7,44 @@
 //
 
 import UIKit
+import Parse
 
-class TradeTableViewCell: UITableViewCell {
-    @IBOutlet weak var giveImageView: UIImageView!
-    @IBOutlet weak var getImageView: UIImageView!
+class TradeTableViewCell: PFTableViewCell {
+    @IBOutlet weak var giveImageView: PFImageView!
+    @IBOutlet weak var getImageView: PFImageView!
+    
     private var tradeStorage:Trade?
     var trade:Trade {
         set(item) {
+            if PFUser.current() == item.requester {
+                //items remain
+                item.getItem?.fetchInBackground(block: { (object, error) in
+                    self.getImageView.file = item.getItem!.image
+                    self.getImageView.loadInBackground()
+                })
+                item.giveItem?.fetchInBackground(block: { (object, error) in
+                    self.giveImageView.file = item.giveItem!.image
+                    self.giveImageView.loadInBackground()
+                })
+            }
+            else {
+                //switch items
+                item.getItem?.fetchInBackground(block: { (object, error) in
+                    self.giveImageView.file = item.getItem!.image
+                    self.giveImageView.loadInBackground()
+                })
+                item.giveItem?.fetchInBackground(block: { (object, error) in
+                    self.getImageView.file = item.giveItem!.image
+                    self.getImageView.loadInBackground()
+                })
+                
+            }
+            
             tradeStorage = trade
             
+            
+            
+            /*
                 do {
                     try item.getItem!.fetchIfNeeded()
                 }
@@ -43,7 +72,7 @@ class TradeTableViewCell: UITableViewCell {
                         self.giveImageView.image = image
                     }
                 
-            }
+            }*/
         }
         get {
             return tradeStorage ?? Trade()

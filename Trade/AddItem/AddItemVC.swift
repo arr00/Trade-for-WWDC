@@ -36,9 +36,26 @@ class AddItemVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 for object in objects! {
                     self.availibleItems.append(object as! Item)
                 }
+                
+                if self.availibleItems.count == 0 {
+                    let alert = UIAlertController(title: "No items to trade yet.", message: "There are no items availble to trade in the app yet. As items are give out at WWDC, they will be added. Hold tight!", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
+                /*
                 let item = Item()
                 item.title = "Money"
-                self.availibleItems.append(item)
+                self.availibleItems.append(item)*/
+                
+                self.availibleItems.sort(by: { (i1, i2) -> Bool in
+                    guard let i1Order = i1["order"] as? Double else {
+                        return false
+                    }
+                    guard let i2Order = i2["order"] as? Double else {
+                        return false
+                    }
+                    return i1Order < i2Order
+                })
                 self.tableView.reloadData()
             }
         }

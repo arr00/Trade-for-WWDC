@@ -48,6 +48,7 @@ class TradeDetailsViewController: UIViewController, UITableViewDelegate,UITableV
         // Do any additional setup after loading the view.
     }
     
+    
     @objc func acceptTrade() {
         //TODO: Make trades immutable
         //trade.match = PFUser.current()!
@@ -55,12 +56,23 @@ class TradeDetailsViewController: UIViewController, UITableViewDelegate,UITableV
         //loading
         PFCloud.callFunction(inBackground: "acceptTrade", withParameters: ["tradeId":trade.objectId!]) { (result, error) in
             print("Finished cloud call with result \(result)")
-            let alert = UIAlertController(title: "Trade accepted!", message: "Go to messages to chat with your trade mate!", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { (alert) in
-                //action
-            }))
-            self.navigationController?.popToRootViewController(animated: true)
-            self.navigationController!.present(alert, animated: true, completion: nil)
+            if error == nil {
+                let alert = UIAlertController(title: "Trade accepted!", message: "Go to messages to chat with your trade mate!", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { (alert) in
+                    //action
+                }))
+                self.navigationController?.popToRootViewController(animated: true)
+                self.navigationController!.present(alert, animated: true, completion: nil)
+            }
+            else {
+                let alert = UIAlertController(title: "Error accepting trade", message: error!.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { (alert) in
+                    //action
+                }))
+                self.navigationController?.popToRootViewController(animated: true)
+                self.navigationController!.present(alert, animated: true, completion: nil)
+            }
+            
         }
       
     }
@@ -75,6 +87,13 @@ class TradeDetailsViewController: UIViewController, UITableViewDelegate,UITableV
             if success {
                 let alert = UIAlertController(title: "Trade posted successfully", message: "Your trade is on our servers! Hold tight and we'll let you know when it's accepted.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Cool", style: .default, handler: { (action) in
+                    self.myDismiss()
+                }))
+                self.present(alert, animated: true, completion:nil)
+            }
+            else {
+                let alert = UIAlertController(title: "Error posting trade", message: error?.localizedDescription, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
                     self.myDismiss()
                 }))
                 self.present(alert, animated: true, completion:nil)
@@ -128,18 +147,29 @@ class TradeDetailsViewController: UIViewController, UITableViewDelegate,UITableV
         
         if indexPath.section == 0 {
             let cell = UITableViewCell()
-            cell.textLabel?.text = trade.giveItem!.title
+            if PFUser.current() == trade.requester {
+                cell.textLabel?.text = trade.giveItem!.title
+            }
+            else {
+                cell.textLabel?.text = trade.getItem!.title
+            }
             return cell
         }
         else {
             let cell = UITableViewCell()
-            cell.textLabel?.text = trade.getItem!.title
+            if PFUser.current() == trade.requester {
+                cell.textLabel?.text = trade.getItem!.title
+            }
+            else {
+                cell.textLabel?.text = trade.giveItem!.title
+            }
             return cell
         }
         
     }
     override func viewDidAppear(_ animated: Bool) {
         tableView.reloadData()
+        print("Trade details \n Trade give details \(trade.giveItemNotes) \n Trade get details \(trade.getItemNotes)")
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -147,25 +177,45 @@ class TradeDetailsViewController: UIViewController, UITableViewDelegate,UITableV
         
         
         if indexPath.section == 0 {
-            if trade.giveItem != nil {
+            giveGet = false
+            var giveItem:Item?
+            if PFUser.current() == trade.requester {
+                giveItem = trade.giveItem
+            }
+            else {
+                giveItem = trade.getItem
+            }
+            if giveItem != nil {
                 let vc = storyboard?.instantiateViewController(withIdentifier: "itemDescription") as! ItemDescriptionViewController
-                vc.item = trade.giveItem
+                vc.item = giveItem
                 vc.editable = false
+                vc.trade = trade
+                vc.getOrGive = giveGet
                 self.navigationController?.show(vc, sender: self)
                 return
             }
-            giveGet = false
+            
         }
         else {
-            if trade.getItem != nil {
+            giveGet = true
+            var getItem:Item?
+            if PFUser.current() == trade.requester {
+                getItem = trade.getItem
+            }
+            else {
+                getItem = trade.giveItem
+            }
+            if getItem != nil {
                 let vc = storyboard?.instantiateViewController(withIdentifier: "itemDescription") as! ItemDescriptionViewController
-                vc.item = trade.getItem
+                vc.item = getItem
+                vc.trade = trade
                 vc.editable = false
+                vc.getOrGive = giveGet
                 self.navigationController?.show(vc, sender: self)
                 return
             }
            
-            giveGet = true
+            
         }
         self.performSegue(withIdentifier: "addItem", sender: self)
     }

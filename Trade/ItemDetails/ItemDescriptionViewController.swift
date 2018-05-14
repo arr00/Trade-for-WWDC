@@ -15,6 +15,7 @@ class ItemDescriptionViewController: UIViewController, UITableViewDelegate, UITa
     var type:Type?
     var trade:Trade?
     var getOrGive:Bool?
+    var textViewCell:TextViewTableViewCell?
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var imageView: UIImageView!
     override func viewDidLoad() {
@@ -45,11 +46,23 @@ class ItemDescriptionViewController: UIViewController, UITableViewDelegate, UITa
     }
     
     @objc func save() {
+        let textCell = tableView.cellForRow(at: IndexPath(item: 1, section: 0)) as! TextViewTableViewCell
         if getOrGive ?? false {
             trade?.getItem = item!
+            
+            if textCell.getNoteString() != "Optional comments here. Ex: Size, Color, Condition..." {
+                trade?.getItemNotes = textCell.getNoteString()
+                print("Setting get item note to \(textCell.getNoteString())")
+            }
+            
         }
         else {
+            if textCell.getNoteString() != "Optional comments here. Ex: Size, Color, Condition..." {
+                trade?.giveItemNotes = textCell.getNoteString()
+                print("Setting give item note to \(textCell.getNoteString())")
+            }
             trade?.giveItem = item!
+            
         }
         print("saving")
         
@@ -86,8 +99,21 @@ class ItemDescriptionViewController: UIViewController, UITableViewDelegate, UITa
                 }
                 else {
                     cell.textView.isEditable = false
-                    cell.textView.text = item!.notes ?? ""
+                    if getOrGive ?? false {
+                        //get
+                     
+                        //cell.textView.text =
+                        cell.setText(text:trade?.giveItemNotes ?? "")
+                    }
+                    else {
+                        //give
+                        cell.setText(text:trade?.getItemNotes ?? "")
+                        //cell.textView.text = trade?. ?? ""
+                    }
+                    
+                    
                 }
+                
                 return cell
             }
         }

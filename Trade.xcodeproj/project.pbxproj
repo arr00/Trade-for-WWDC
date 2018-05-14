@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3031A71A20A3D498001F5CE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3031A71920A3D498001F5CE9 /* Assets.xcassets */; };
+		3031A71C20A3D615001F5CE9 /* ParseTradesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3031A71B20A3D615001F5CE9 /* ParseTradesTableViewController.swift */; };
 		3035EB1620A0A83300363044 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3035EB1520A0A83300363044 /* AppDelegate.swift */; };
 		3035EB1820A0A83300363044 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3035EB1720A0A83300363044 /* ViewController.swift */; };
 		3035EB1B20A0A83300363044 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3035EB1920A0A83300363044 /* Main.storyboard */; };
@@ -24,12 +26,14 @@
 		307EDBD820A0E08F001E06B8 /* TradeDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307EDBD720A0E08F001E06B8 /* TradeDetailsViewController.swift */; };
 		30A329BF20A12E27007095FB /* TradesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A329BE20A12E27007095FB /* TradesViewController.swift */; };
 		30C8174620A2707500DA0C4C /* ActualMessagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C8174520A2707500DA0C4C /* ActualMessagingViewController.swift */; };
-		30E3952120A27FFD0034F74F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30E3952020A27FFD0034F74F /* Assets.xcassets */; };
+		30E8AD1020A92FBB00BB1734 /* AuthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E8AD0F20A92FBB00BB1734 /* AuthVC.swift */; };
 		45048D6C7E90CC7239E5A1DD /* Pods_Trade.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55BE4A048091E487BF3F80D9 /* Pods_Trade.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		300D7EC720A3A24100C5C2D2 /* Trade.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Trade.entitlements; sourceTree = "<group>"; };
+		3031A71920A3D498001F5CE9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3031A71B20A3D615001F5CE9 /* ParseTradesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseTradesTableViewController.swift; sourceTree = "<group>"; };
 		3035EB1220A0A83300363044 /* Trade.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trade.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3035EB1520A0A83300363044 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3035EB1720A0A83300363044 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -49,7 +53,7 @@
 		307EDBD720A0E08F001E06B8 /* TradeDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeDetailsViewController.swift; sourceTree = "<group>"; };
 		30A329BE20A12E27007095FB /* TradesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradesViewController.swift; sourceTree = "<group>"; };
 		30C8174520A2707500DA0C4C /* ActualMessagingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActualMessagingViewController.swift; sourceTree = "<group>"; };
-		30E3952020A27FFD0034F74F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../Downloads/Assets.xcassets; sourceTree = "<group>"; };
+		30E8AD0F20A92FBB00BB1734 /* AuthVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthVC.swift; sourceTree = "<group>"; };
 		55BE4A048091E487BF3F80D9 /* Pods_Trade.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Trade.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C845E2A5638512DFBC9D6122 /* Pods-Trade.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trade.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Trade/Pods-Trade.debug.xcconfig"; sourceTree = "<group>"; };
 		D0E3C56110E81E23A2FCEB10 /* Pods-Trade.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trade.release.xcconfig"; path = "Pods/Target Support Files/Pods-Trade/Pods-Trade.release.xcconfig"; sourceTree = "<group>"; };
@@ -95,8 +99,8 @@
 				3035EB1520A0A83300363044 /* AppDelegate.swift */,
 				3035EB1720A0A83300363044 /* ViewController.swift */,
 				3035EB1920A0A83300363044 /* Main.storyboard */,
-				30E3952020A27FFD0034F74F /* Assets.xcassets */,
 				3035EB1E20A0A83500363044 /* LaunchScreen.storyboard */,
+				3031A71920A3D498001F5CE9 /* Assets.xcassets */,
 				3035EB2120A0A83500363044 /* Info.plist */,
 				3035EB2720A0A95900363044 /* TradeTableViewCell.swift */,
 				3035EB2820A0A95900363044 /* TradeTableViewCell.xib */,
@@ -105,6 +109,8 @@
 				30A329BE20A12E27007095FB /* TradesViewController.swift */,
 				3074EDA320A26EFB0093A809 /* MessagesViewController.swift */,
 				30C8174520A2707500DA0C4C /* ActualMessagingViewController.swift */,
+				3031A71B20A3D615001F5CE9 /* ParseTradesTableViewController.swift */,
+				30E8AD0F20A92FBB00BB1734 /* AuthVC.swift */,
 			);
 			path = Trade;
 			sourceTree = "<group>";
@@ -223,8 +229,8 @@
 			files = (
 				3035EB2020A0A83500363044 /* LaunchScreen.storyboard in Resources */,
 				3035EB2A20A0A95900363044 /* TradeTableViewCell.xib in Resources */,
+				3031A71A20A3D498001F5CE9 /* Assets.xcassets in Resources */,
 				3035EB1B20A0A83300363044 /* Main.storyboard in Resources */,
-				30E3952120A27FFD0034F74F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +290,8 @@
 			files = (
 				307EDBD420A0CC20001E06B8 /* YourTradesViewController.swift in Sources */,
 				30C8174620A2707500DA0C4C /* ActualMessagingViewController.swift in Sources */,
+				30E8AD1020A92FBB00BB1734 /* AuthVC.swift in Sources */,
+				3031A71C20A3D615001F5CE9 /* ParseTradesTableViewController.swift in Sources */,
 				307EDBC420A0C33E001E06B8 /* Item.swift in Sources */,
 				3074EDA420A26EFB0093A809 /* MessagesViewController.swift in Sources */,
 				307EDBD820A0E08F001E06B8 /* TradeDetailsViewController.swift in Sources */,
@@ -439,7 +447,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C845E2A5638512DFBC9D6122 /* Pods-Trade.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon1;
 				CODE_SIGN_ENTITLEMENTS = Trade/Trade.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7U2DH9VLGW;
@@ -459,7 +467,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D0E3C56110E81E23A2FCEB10 /* Pods-Trade.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon1;
 				CODE_SIGN_ENTITLEMENTS = Trade/Trade.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7U2DH9VLGW;

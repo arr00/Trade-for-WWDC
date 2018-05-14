@@ -24,8 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Item.registerSubclass()
         
         let parseSetup = ParseClientConfiguration { (server) in
-            server.applicationId = "APPLICATION_ID"
-            server.server = "http://129.98.193.215:1337/parse"
+            server.applicationId = "APP_ID"
+            server.server = "https://trade-for-wwdc.herokuapp.com/parse"
         }
         Parse.initialize(with: parseSetup)
         

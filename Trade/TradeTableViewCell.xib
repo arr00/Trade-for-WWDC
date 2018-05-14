@@ -19,7 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="100.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4Da-0h-RSs">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4Da-0h-RSs" customClass="PFImageView">
                         <rect key="frame" x="260" y="0.0" width="115" height="100"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="115" id="Tne-BL-n6l"/>
@@ -28,7 +28,7 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tradeArrows" translatesAutoresizingMaskIntoConstraints="NO" id="sqH-cA-sHH">
                         <rect key="frame" x="158.5" y="37.5" width="58" height="26"/>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gwh-kV-0Ce">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gwh-kV-0Ce" customClass="PFImageView">
                         <rect key="frame" x="0.0" y="0.0" width="130" height="100"/>
                         <color key="backgroundColor" red="0.99479166666666663" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -65,8 +65,8 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="getImageView" destination="4Da-0h-RSs" id="HkZ-oY-R2H"/>
-                <outlet property="giveImageView" destination="gwh-kV-0Ce" id="SHa-fe-6gt"/>
+                <outlet property="getImageView" destination="4Da-0h-RSs" id="jGP-Kz-1kz"/>
+                <outlet property="giveImageView" destination="gwh-kV-0Ce" id="MfK-w2-gCI"/>
             </connections>
             <point key="canvasLocation" x="-53.5" y="33.5"/>
         </tableViewCell>
