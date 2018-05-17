@@ -16,7 +16,7 @@ class TradeTableViewCell: PFTableViewCell {
     private var tradeStorage:Trade?
     var trade:Trade {
         set(item) {
-            if PFUser.current() == item.requester {
+            if PFUser.current()?.objectId == item.requester.objectId {
                 //items remain
                 item.getItem?.fetchInBackground(block: { (object, error) in
                     self.getImageView.file = item.getItem!.image

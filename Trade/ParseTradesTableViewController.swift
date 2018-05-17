@@ -20,6 +20,7 @@ class ParseTradesTableViewController: PFQueryTableViewController, CLLocationMana
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        print("loaded view")
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -36,8 +37,10 @@ class ParseTradesTableViewController: PFQueryTableViewController, CLLocationMana
                     SBDMain.connect(withUserId: user!.objectId!, completionHandler: { (user, error) in
                         print("Connected to sendbird")
                     })
-                    if PFInstallation.current()?.objectId != nil {
-                        user!["installationId"] = PFInstallation.current()!.objectId
+                    if PFInstallation.current()!.deviceToken != nil {
+                        PFUser.current()!["myDeviceToken"] = PFInstallation.current()!.deviceToken
+                        PFUser.current()?.saveInBackground()
+                        
                     }
                     
                 }
@@ -47,6 +50,8 @@ class ParseTradesTableViewController: PFQueryTableViewController, CLLocationMana
    
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "plus"), style: .done, target: self, action: #selector(ParseTradesTableViewController.addTrade))
+        
+        print("Completed view did load")
     }
 
     @objc func addTrade() {
@@ -57,6 +62,7 @@ class ParseTradesTableViewController: PFQueryTableViewController, CLLocationMana
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        print("View started view did appear")
         let notificationSettings = UIUserNotificationSettings(types: [UIUserNotificationType.alert, UIUserNotificationType.sound], categories: nil)
         UIApplication.shared.registerUserNotificationSettings(notificationSettings)
         UIApplication.shared.registerForRemoteNotifications()
@@ -65,7 +71,7 @@ class ParseTradesTableViewController: PFQueryTableViewController, CLLocationMana
             let vc = storyboard?.instantiateViewController(withIdentifier: "auth") as! AuthVC
             self.present(vc, animated: true, completion: nil)
         }
-        
+        print("Finished view did appear")
        
         
         
@@ -93,7 +99,10 @@ class ParseTradesTableViewController: PFQueryTableViewController, CLLocationMana
     }
     override func queryForTable() -> PFQuery<PFObject> {
         let query = PFQuery(className: "Trade")
-        query.whereKey("requester", notEqualTo: PFUser.current())
+        if PFUser.current() != nil {
+            query.whereKey("requester", notEqualTo: PFUser.current()!)
+        }
+        
         query.whereKeyDoesNotExist("match")
         query.order(byDescending: "createdAt")
         return query

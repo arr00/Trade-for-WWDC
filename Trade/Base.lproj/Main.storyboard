@@ -280,10 +280,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Srk-KN-E2n">
-                                                    <rect key="frame" x="15" y="4" width="33" height="34"/>
+                                                    <rect key="frame" x="17" y="4" width="30" height="34"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                    <state key="normal" title="Add"/>
+                                                    <state key="normal" title="Set"/>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -383,7 +383,7 @@
         <scene sceneID="J1c-62-fBl">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yLL-Yx-HP4" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Pending Trades" id="qCE-BT-Gtc"/>
+                    <tabBarItem key="tabBarItem" title="Pending Trades" image="profile" id="qCE-BT-Gtc"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="M2G-wQ-LLy">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -402,7 +402,7 @@
         <scene sceneID="Ih8-ZM-IbM">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nWa-oa-b22" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Messages" id="WZg-YA-WRC"/>
+                    <tabBarItem key="tabBarItem" title="Messages" image="message" id="WZg-YA-WRC"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="U55-hu-QQK">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -478,7 +478,7 @@
         <scene sceneID="2eA-t8-mlq">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3ma-KW-1J9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Trades" id="RYf-bT-CpO"/>
+                    <tabBarItem key="tabBarItem" title="Trades" image="tradeArrowsIcon" id="RYf-bT-CpO"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Riv-ba-ffg">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -495,7 +495,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="message" width="30" height="25"/>
+        <image name="profile" width="31" height="31"/>
         <image name="tradeArrows" width="58" height="26"/>
+        <image name="tradeArrowsIcon" width="40" height="18"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="qhs-FT-vjN"/>

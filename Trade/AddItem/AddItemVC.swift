@@ -25,8 +25,22 @@ class AddItemVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         tableView.dataSource = self
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .done, target: self, action: #selector(AddItemVC.cancel))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Request new item", style: .plain, target: self, action: #selector(AddItemVC.requestAdditionalItems))
         
         // Do any additional setup after loading the view.
+    }
+    @objc func requestAdditionalItems() {
+        let alert = UIAlertController(title: "Request new item to trade.", message: "Trades for WWDC only allows trades with items added by us. If there is an item missing that has been around for a while, please send us an email.", preferredStyle: .alert)
+        let emailButton = UIAlertAction(title: "Send email", style: .default) { (alert) in
+            if let url = URL(string: "mailto:support@agapps.xyz") {
+                print("Opening link")
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        }
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        alert.addAction(emailButton)
+        
+        self.present(alert, animated: true, completion: nil)
     }
     func updateItems() {
         availibleItems.removeAll()
@@ -87,20 +101,10 @@ class AddItemVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == availibleItems.count - 1 {
-            let alert = UIAlertController(title: "Value in USD", message: "", preferredStyle: .alert)
-            alert.addTextField { (field) in
-                print("hello")
-            }
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (alert) in
-                print("Added money with value of ")
-            }))
-            self.present(alert, animated: true, completion: nil)
-        }
-        else {
+        
             currentIndex = indexPath.row
             self.performSegue(withIdentifier: "showItemDetails", sender: self)
-        }
+        
         
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

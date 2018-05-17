@@ -35,7 +35,8 @@ class TradeDetailsViewController: UIViewController, UITableViewDelegate,UITableV
             break
         case .ExistingTrade:
             self.navigationItem.title = "Trade"
-            if trade.requester != PFUser.current() && trade.match == nil {
+            print("Trade requester is \(trade.requester.objectId), and current user is \(PFUser.current()?.objectId)")
+            if trade.requester.objectId != PFUser.current()?.objectId && trade.match == nil {
                 self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Accept", style: .done, target: self, action: #selector(TradeDetailsViewController.acceptTrade))
             }
             break
@@ -147,7 +148,7 @@ class TradeDetailsViewController: UIViewController, UITableViewDelegate,UITableV
         
         if indexPath.section == 0 {
             let cell = UITableViewCell()
-            if PFUser.current() == trade.requester {
+            if PFUser.current()?.objectId == trade.requester.objectId {
                 cell.textLabel?.text = trade.giveItem!.title
             }
             else {
@@ -157,7 +158,7 @@ class TradeDetailsViewController: UIViewController, UITableViewDelegate,UITableV
         }
         else {
             let cell = UITableViewCell()
-            if PFUser.current() == trade.requester {
+            if PFUser.current()?.objectId == trade.requester.objectId {
                 cell.textLabel?.text = trade.getItem!.title
             }
             else {
@@ -179,7 +180,7 @@ class TradeDetailsViewController: UIViewController, UITableViewDelegate,UITableV
         if indexPath.section == 0 {
             giveGet = false
             var giveItem:Item?
-            if PFUser.current() == trade.requester {
+            if PFUser.current()?.objectId == trade.requester.objectId {
                 giveItem = trade.giveItem
             }
             else {
@@ -199,7 +200,7 @@ class TradeDetailsViewController: UIViewController, UITableViewDelegate,UITableV
         else {
             giveGet = true
             var getItem:Item?
-            if PFUser.current() == trade.requester {
+            if PFUser.current()?.objectId == trade.requester.objectId {
                 getItem = trade.getItem
             }
             else {

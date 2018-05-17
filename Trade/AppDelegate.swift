@@ -4,7 +4,7 @@
 //
 //  Created by Aryeh Greenberg on 5/7/18.
 //  Copyright © 2018 AGApps. All rights reserved.
-//
+//  EFB
 
 import UIKit
 import Parse
@@ -45,19 +45,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 else {
                     // Registration succeeded.
                 }
+                
+               
+                let installation = PFInstallation.current()
+                installation?.setDeviceTokenFrom(deviceToken)
+                installation?.saveInBackground()
+                
+                PFUser.current()!["myDeviceToken"] = installation?.deviceToken
+                PFUser.current()?.saveInBackground()
+                
+                
+                
             }
             else {
                 // Registration failed.
             }
         }
-        let installation = PFInstallation.current()
-        installation?.setDeviceTokenFrom(deviceToken)
-        installation?.saveInBackground()
         
-        if PFUser.current() != nil {
-            PFUser.current()!["installationId"] = installation?.objectId
-            PFUser.current()?.saveInBackground()
-        }
     }
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         print("Failed to register!")

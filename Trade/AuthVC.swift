@@ -30,7 +30,7 @@ class AuthVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
         
         // Do any additional setup after loading the view.
-        let title = "Welcome to trade for WWDC. You must be located within this region to use the app."
+        let title = "Welcome to Trade for WWDC. You must be located within this region to use the app."
         label.text = title
         locationManager.delegate = self
         mapView.showsUserLocation = true
@@ -54,7 +54,7 @@ class AuthVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         for location in locations {
             self.location = location
-            Timer.scheduledTimer(withTimeInterval: 4, repeats: false) { (timer) in
+            Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { (timer) in
                 self.checkLocation()
             }
         }
