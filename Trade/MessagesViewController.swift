@@ -57,7 +57,7 @@ class MessagesVC:UIViewController, UITableViewDelegate, UITableViewDataSource {
         requester.whereKeyExists("match")
         match.whereKey("match", equalTo: PFUser.current())
         let jointQuery = PFQuery.orQuery(withSubqueries: [requester,match])
-        jointQuery.order(byDescending: "createdAt")
+        jointQuery.order(byDescending: "acceptedAt")
 
         jointQuery.findObjectsInBackground { (objects, error) in
             if error == nil && objects != nil {

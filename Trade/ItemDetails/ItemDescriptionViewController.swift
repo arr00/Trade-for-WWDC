@@ -16,6 +16,7 @@ class ItemDescriptionViewController: UIViewController, UITableViewDelegate, UITa
     var trade:Trade?
     var getOrGive:Bool?
     var textViewCell:TextViewTableViewCell?
+    var notes:String?
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var imageView: UIImageView!
     override func viewDidLoad() {
@@ -24,7 +25,7 @@ class ItemDescriptionViewController: UIViewController, UITableViewDelegate, UITa
         switch type ?? Type.ExistingTrade {
         case .NewTrade:
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(ItemDescriptionViewController.save))
-        case .ExistingTrade:
+        default:
             //self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Close", style: .done, target: self, action: #selector(ItemDescriptionViewController.dismissMe))
             break
         }
@@ -99,17 +100,7 @@ class ItemDescriptionViewController: UIViewController, UITableViewDelegate, UITa
                 }
                 else {
                     cell.textView.isEditable = false
-                    if getOrGive ?? false {
-                        //get
-                     
-                        //cell.textView.text =
-                        cell.setText(text:trade?.giveItemNotes ?? "")
-                    }
-                    else {
-                        //give
-                        cell.setText(text:trade?.getItemNotes ?? "")
-                        //cell.textView.text = trade?. ?? ""
-                    }
+                    cell.setText(text: notes ?? "")
                     
                     
                 }

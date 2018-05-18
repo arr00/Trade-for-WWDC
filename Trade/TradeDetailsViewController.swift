@@ -33,12 +33,14 @@ class TradeDetailsViewController: UIViewController, UITableViewDelegate,UITableV
             self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(TradeDetailsViewController.myDismiss))
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Submit", style: .done, target: self, action: #selector(TradeDetailsViewController.submitTrade))
             break
+        case .AcceptableTrade:
+            self.navigationItem.title = "Trade"
+         
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Accept", style: .done, target: self, action: #selector(TradeDetailsViewController.acceptTrade))
+            break
         case .ExistingTrade:
             self.navigationItem.title = "Trade"
-            print("Trade requester is \(trade.requester.objectId), and current user is \(PFUser.current()?.objectId)")
-            if trade.requester.objectId != PFUser.current()?.objectId && trade.match == nil {
-                self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Accept", style: .done, target: self, action: #selector(TradeDetailsViewController.acceptTrade))
-            }
+           
             break
             
         }
@@ -122,8 +124,9 @@ class TradeDetailsViewController: UIViewController, UITableViewDelegate,UITableV
             return 1
         case .NewTrade:
             return 1
+        case .AcceptableTrade:
+            return 1
         }
-        
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return section == 0 ? "Give":"Get"
@@ -180,11 +183,14 @@ class TradeDetailsViewController: UIViewController, UITableViewDelegate,UITableV
         if indexPath.section == 0 {
             giveGet = false
             var giveItem:Item?
+            var notes = ""
             if PFUser.current()?.objectId == trade.requester.objectId {
                 giveItem = trade.giveItem
+                notes = trade.giveItemNotes
             }
             else {
                 giveItem = trade.getItem
+                notes = trade.getItemNotes
             }
             if giveItem != nil {
                 let vc = storyboard?.instantiateViewController(withIdentifier: "itemDescription") as! ItemDescriptionViewController
@@ -192,6 +198,7 @@ class TradeDetailsViewController: UIViewController, UITableViewDelegate,UITableV
                 vc.editable = false
                 vc.trade = trade
                 vc.getOrGive = giveGet
+                vc.notes = notes
                 self.navigationController?.show(vc, sender: self)
                 return
             }
@@ -200,11 +207,14 @@ class TradeDetailsViewController: UIViewController, UITableViewDelegate,UITableV
         else {
             giveGet = true
             var getItem:Item?
+            var notes = ""
             if PFUser.current()?.objectId == trade.requester.objectId {
                 getItem = trade.getItem
+                notes = trade.getItemNotes
             }
             else {
                 getItem = trade.giveItem
+                notes = trade.giveItemNotes
             }
             if getItem != nil {
                 let vc = storyboard?.instantiateViewController(withIdentifier: "itemDescription") as! ItemDescriptionViewController
@@ -212,6 +222,7 @@ class TradeDetailsViewController: UIViewController, UITableViewDelegate,UITableV
                 vc.trade = trade
                 vc.editable = false
                 vc.getOrGive = giveGet
+                vc.notes = notes
                 self.navigationController?.show(vc, sender: self)
                 return
             }
@@ -244,4 +255,5 @@ class TradeDetailsViewController: UIViewController, UITableViewDelegate,UITableV
 public enum Type {
     case NewTrade
     case ExistingTrade
+    case AcceptableTrade
 }

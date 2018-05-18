@@ -203,7 +203,7 @@ class ParseTradesTableViewController: PFQueryTableViewController, CLLocationMana
         // Pass the selected object to the new view controller.
         if let dest = segue.destination as? TradeDetailsViewController {
             dest.trade = selectedTrade
-            dest.vcType = Type.ExistingTrade
+            dest.vcType = Type.AcceptableTrade
         }
     }
 
