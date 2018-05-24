@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import Parse
 
 class AuthVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     var locationManager = CLLocationManager()
@@ -39,6 +40,7 @@ class AuthVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
         
     }
     override func viewDidAppear(_ animated: Bool) {
+        
         if CLLocationManager.authorizationStatus() == CLAuthorizationStatus.notDetermined {
             locationManager.requestWhenInUseAuthorization()
         }
@@ -50,6 +52,16 @@ class AuthVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
+        PFConfig.getInBackground { (config, error) in
+            if let rest = config?["restricted"] as? Bool {
+                if rest == false {
+                    UserDefaults.standard.set(true, forKey: "authorized")
+                    UserDefaults.standard.synchronize()
+                    self.dismiss(animated: true, completion: nil)
+                }
+            }
+        }
+        
     }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         for location in locations {
@@ -62,6 +74,7 @@ class AuthVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     func checkLocation() {
         if location != nil {
             if location!.distance(from: CLLocation(latitude: 37.328859, longitude: -121.889135)) < 10000.0 {
+                
                 print("good")
                 UserDefaults.standard.set(true, forKey: "authorized")
                 UserDefaults.standard.synchronize()

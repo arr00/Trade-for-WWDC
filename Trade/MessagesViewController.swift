@@ -53,9 +53,13 @@ class MessagesVC:UIViewController, UITableViewDelegate, UITableViewDataSource {
         tableView.reloadData()
         let match = PFQuery(className: "Trade")
         let requester = PFQuery(className: "Trade")
-        requester.whereKey("requester", equalTo: PFUser.current())
+        if PFUser.current() != nil {
+            requester.whereKey("requester", equalTo: PFUser.current()!)
+            match.whereKey("match", equalTo: PFUser.current()!)
+        }
+        
         requester.whereKeyExists("match")
-        match.whereKey("match", equalTo: PFUser.current())
+        
         let jointQuery = PFQuery.orQuery(withSubqueries: [requester,match])
         jointQuery.order(byDescending: "acceptedAt")
 

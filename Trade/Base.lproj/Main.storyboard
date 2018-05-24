@@ -93,38 +93,6 @@
             </objects>
             <point key="canvasLocation" x="1706" y="355"/>
         </scene>
-        <!--Trades-->
-        <scene sceneID="IBK-Eq-gQ0">
-            <objects>
-                <viewController id="ULg-bT-97M" customClass="TradesViewController" customModule="Trade" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="2hU-DH-ISG">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sH6-3I-Nob">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="sH6-3I-Nob" firstAttribute="trailing" secondItem="jFd-eJ-mU7" secondAttribute="trailing" id="BCG-3d-xh6"/>
-                            <constraint firstItem="sH6-3I-Nob" firstAttribute="top" secondItem="2hU-DH-ISG" secondAttribute="top" id="Pr3-Td-UKJ"/>
-                            <constraint firstItem="sH6-3I-Nob" firstAttribute="leading" secondItem="jFd-eJ-mU7" secondAttribute="leading" id="Rax-hY-LAy"/>
-                            <constraint firstAttribute="bottom" secondItem="sH6-3I-Nob" secondAttribute="bottom" id="x4x-AJ-gkL"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="jFd-eJ-mU7"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Trades" id="Tjb-N7-ARh"/>
-                    <connections>
-                        <outlet property="tableView" destination="sH6-3I-Nob" id="C2w-8C-Eqf"/>
-                        <segue destination="wSg-sX-rx8" kind="show" identifier="showDetails" id="vLI-9T-bmv"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WhE-J8-CZP" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1864.8" y="-978.26086956521749"/>
-        </scene>
         <!--Item Description View Controller-->
         <scene sceneID="Bma-ji-b5X">
             <objects>
@@ -360,25 +328,6 @@
             </objects>
             <point key="canvasLocation" x="-24.800000000000001" y="-645.42728635682158"/>
         </scene>
-        <!--Trades-->
-        <scene sceneID="O6U-ZL-0oe">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yTg-6G-pXL" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Trades" id="hHt-mz-wtw"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Rke-3G-uJ5">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="ULg-bT-97M" kind="relationship" relationship="rootViewController" id="WHc-5v-JPn"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Prl-og-CWM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="925.60000000000002" y="-978.26086956521749"/>
-        </scene>
         <!--Pending Trades-->
         <scene sceneID="J1c-62-fBl">
             <objects>
@@ -433,7 +382,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T87-BD-bXN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-964" y="-2014.5427286356824"/>
+            <point key="canvasLocation" x="-964" y="-2079"/>
         </scene>
         <!--AuthVC-->
         <scene sceneID="vzl-Nm-qbm">

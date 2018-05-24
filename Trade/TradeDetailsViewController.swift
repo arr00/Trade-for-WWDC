@@ -23,7 +23,7 @@ class TradeDetailsViewController: UIViewController, UITableViewDelegate,UITableV
         if trade == nil {
             trade = Trade()
             if let user = PFUser.current() {
-                trade.requester = PFUser.current()!
+                trade.requester = user
             }
         }
         
@@ -58,7 +58,7 @@ class TradeDetailsViewController: UIViewController, UITableViewDelegate,UITableV
 
         //loading
         PFCloud.callFunction(inBackground: "acceptTrade", withParameters: ["tradeId":trade.objectId!]) { (result, error) in
-            print("Finished cloud call with result \(result)")
+            //print("Finished cloud call with result \(result)")
             if error == nil {
                 let alert = UIAlertController(title: "Trade accepted!", message: "Go to messages to chat with your trade mate!", preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { (alert) in

@@ -37,7 +37,10 @@ class YourTradesViewController: UIViewController, UITableViewDelegate, UITableVi
         yourTrades.removeAll()
         tableView.reloadData()
         let query = PFQuery(className: "Trade")
-        query.whereKey("requester", equalTo: PFUser.current())
+        if PFUser.current() != nil {
+            query.whereKey("requester", equalTo: PFUser.current()!)
+        }
+        
         query.whereKeyDoesNotExist("match")
         query.findObjectsInBackground { (objects, error) in
             if error == nil && objects != nil {

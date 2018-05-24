@@ -9,6 +9,7 @@
 import UIKit
 import Parse
 import SendBirdSDK
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -28,6 +29,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             server.server = "https://trade-for-wwdc.herokuapp.com/parse"
         }
         Parse.initialize(with: parseSetup)
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound]) { (complete, error) in
+            if complete {
+                DispatchQueue.main.async {
+                    application.registerForRemoteNotifications()
+                }
+                
+            }
+        }
         
         
         
@@ -51,8 +61,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 installation?.setDeviceTokenFrom(deviceToken)
                 installation?.saveInBackground()
                 
-                PFUser.current()!["myDeviceToken"] = installation?.deviceToken
-                PFUser.current()?.saveInBackground()
+                if PFUser.current() != nil {
+                    PFUser.current()!["myDeviceToken"] = installation?.deviceToken
+                    PFUser.current()!.saveInBackground()
+                }
+                
                 
                 
                 

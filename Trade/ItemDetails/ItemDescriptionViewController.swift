@@ -65,10 +65,10 @@ class ItemDescriptionViewController: UIViewController, UITableViewDelegate, UITa
             trade?.giveItem = item!
             
         }
-        print("saving")
+        //print("saving")
         
-        print("Saving trade")
-        print(trade)
+        //print("Saving trade")
+        //print(trade)
         self.dismiss(animated: true, completion: nil)
     }
     @objc func dismissMe() {
