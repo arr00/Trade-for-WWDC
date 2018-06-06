@@ -59,6 +59,12 @@ class ParseTradesTableViewController: PFQueryTableViewController, CLLocationMana
         vc.vcType = Type.NewTrade
         let navContr = UINavigationController(rootViewController: vc)
         self.present(navContr, animated: true, completion: nil)
+        if !UserDefaults.standard.bool(forKey: "authorized") {
+            let vc2 = storyboard?.instantiateViewController(withIdentifier: "auth") as! AuthVC
+            vc.present(vc2, animated: true, completion: nil)
+        }
+        
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -68,12 +74,7 @@ class ParseTradesTableViewController: PFQueryTableViewController, CLLocationMana
         UIApplication.shared.registerUserNotificationSettings(notificationSettings)
         UIApplication.shared.registerForRemoteNotifications()*/
         //self.refreshControl?.beginRefreshing()
-        if !UserDefaults.standard.bool(forKey: "authorized") {
-            let vc = storyboard?.instantiateViewController(withIdentifier: "auth") as! AuthVC
-            self.present(vc, animated: true, completion: nil)
-        }
-        print("Finished view did appear")
-       
+        
         
         
     }

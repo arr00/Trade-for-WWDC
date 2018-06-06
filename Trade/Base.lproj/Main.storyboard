@@ -398,9 +398,8 @@
                                     <constraint firstAttribute="height" constant="369" id="Sbs-1c-8Ab"/>
                                 </constraints>
                             </mapView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aBt-dN-g5w">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aBt-dN-g5w">
                                 <rect key="frame" x="38" y="52" width="290" height="158"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -409,6 +408,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="PtZ-zL-daf" firstAttribute="bottom" secondItem="kv2-Hv-Vek" secondAttribute="bottom" constant="20" id="4qF-xR-xYA"/>
+                            <constraint firstItem="aBt-dN-g5w" firstAttribute="leading" secondItem="PtZ-zL-daf" secondAttribute="leading" constant="38" id="A5V-E6-U9l"/>
+                            <constraint firstItem="PtZ-zL-daf" firstAttribute="trailing" secondItem="aBt-dN-g5w" secondAttribute="trailing" constant="47" id="QQ7-ga-6sV"/>
+                            <constraint firstItem="aBt-dN-g5w" firstAttribute="top" secondItem="PtZ-zL-daf" secondAttribute="top" constant="32" id="QbC-Br-cMU"/>
+                            <constraint firstItem="kv2-Hv-Vek" firstAttribute="top" secondItem="aBt-dN-g5w" secondAttribute="bottom" constant="68" id="fQH-cP-SkX"/>
                             <constraint firstItem="PtZ-zL-daf" firstAttribute="trailing" secondItem="kv2-Hv-Vek" secondAttribute="trailing" constant="16" id="g4G-fV-WVD"/>
                             <constraint firstItem="kv2-Hv-Vek" firstAttribute="leading" secondItem="PtZ-zL-daf" secondAttribute="leading" constant="16" id="gNc-z2-a9C"/>
                         </constraints>

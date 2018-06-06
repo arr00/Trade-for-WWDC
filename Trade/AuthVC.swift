@@ -41,6 +41,16 @@ class AuthVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     }
     override func viewDidAppear(_ animated: Bool) {
         
+        PFConfig.getInBackground { (config, error) in
+            if let rest = config?["restricted"] as? Bool {
+                if rest == false {
+                    UserDefaults.standard.set(true, forKey: "authorized")
+                    UserDefaults.standard.synchronize()
+                    self.dismiss(animated: true, completion: nil)
+                }
+            }
+        }
+        
         if CLLocationManager.authorizationStatus() == CLAuthorizationStatus.notDetermined {
             locationManager.requestWhenInUseAuthorization()
         }
@@ -52,15 +62,7 @@ class AuthVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
-        PFConfig.getInBackground { (config, error) in
-            if let rest = config?["restricted"] as? Bool {
-                if rest == false {
-                    UserDefaults.standard.set(true, forKey: "authorized")
-                    UserDefaults.standard.synchronize()
-                    self.dismiss(animated: true, completion: nil)
-                }
-            }
-        }
+        
         
     }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
